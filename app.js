@@ -1,9 +1,12 @@
 import express from "express";
 import bookRoute from "./routes/bookRoute.js";    
+import studentRoutes from "./routes/studentRoutes.js";
 
 const app = express();
+app.use(express.json());
 
 app.use('/book', bookRoute);
+app.use('/student', studentRoutes);
 
 try{
     const port = 3000;
