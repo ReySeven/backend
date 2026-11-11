@@ -63,11 +63,11 @@ export const deleteStudents = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const deleteStudents = await studentService.deleteStudents(parseInt(id));
+        const deletedStudents = await studentService.deleteStudents(parseInt(id));
 
         res.status(200).json({
             success: true,
-            message: deleteStudents
+            message: deletedStudents
         });
 
     } catch (e) {

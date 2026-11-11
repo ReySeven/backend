@@ -10,4 +10,4 @@ studentRoutes.post('/', studentController.createStudents);
 studentRoutes.put('/:id', studentController.editStudents);
 
 studentRoutes.delete('/:id', studentController.deleteStudents);
-export default studentRoute;
+export default studentRoutes;
