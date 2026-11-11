@@ -12,7 +12,11 @@ export const createBook = async (book) => {
 };
 
 //update
+<<<<<<< HEAD
 export const updateBooks = async(book) =>{
+=======
+export const updateBooks = async(student) =>{
+>>>>>>> 3101097bbde1c77479ed28c24cfb3e183c64d31d
     const updatedBooks = await bookModel.update(book);
     return updatedBooks;
 }

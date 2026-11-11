@@ -15,9 +15,15 @@ export const fetch = async () => {
 };
 
 // Update 
+<<<<<<< HEAD
 export const update = async (student) => {
     const [result] = await pool.query(
         "UPDATE student SET name = ?, srcode = ?, program = ? WHERE id = ?",
+=======
+export const update = async () => {
+    const [result] = await pool.query(
+        "UPDATE students SET name = ?, srcode = ?, program = ? WHERE id = ?",
+>>>>>>> 3101097bbde1c77479ed28c24cfb3e183c64d31d
         [student.name, student.srcode, student.program, student.id]
     );
 
@@ -27,7 +33,11 @@ export const update = async (student) => {
 // Delete
 export const remove = async (id) => {
     const [result] = await pool.query(
+<<<<<<< HEAD
         "DELETE FROM student WHERE id = ?",
+=======
+        "DELETE FROM students WHERE id = ?",
+>>>>>>> 3101097bbde1c77479ed28c24cfb3e183c64d31d
         [id]
     );
 

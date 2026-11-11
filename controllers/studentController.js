@@ -42,11 +42,19 @@ export const editStudents = async (req, res) => {
     };
 
     try {
+<<<<<<< HEAD
         const updateStudents = await studentService.updateStudents(student);
 
         res.status(200).json({
             success: true,
             message: updateStudents
+=======
+        const updatedStudents = await studentService.updateStudents(student);
+
+        res.status(200).json({
+            success: true,
+            message: updatedStudents
+>>>>>>> 3101097bbde1c77479ed28c24cfb3e183c64d31d
         });
 
     } catch (e) {
