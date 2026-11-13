@@ -17,3 +17,6 @@ export const updateStudents = async (student) => {
 export const deleteStudents = async (id) => {
     return await studentModel.remove(id);
 };
+
+
+//test updwte
