@@ -1,4 +1,4 @@
-import * as bookModels from '../models/bookModels.js';
+import * as bookModels from '../models/bookModel.js';
 
 export const fetchAllBooks = async() => {
     const books = await bookModels.fetch();
