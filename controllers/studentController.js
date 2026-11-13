@@ -1,71 +1,65 @@
-import * as studentService from '../services/studentService.js';
+import * as studentServices from '../services/studentService.js';
 
-export const fetchAllStudents = async (req, res) => {
-    try {
-        const students = await studentService.fetchAllStudent();
-        res.status(200).json(students);
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
-};
+export const fetchAllStudent = async(req, res) => {
+    const students = await studentServices.fetchAllStudents();
+    res.status(200).json(students);
+}
 
-export const createStudents = async (req, res) => {
-    const { name, srcode, program } = req.body;
-    const student = { name, srcode, program };
+export const createStudent = async (req, res) => {
+    console.log(req);
+    const {name, srcode, program} = req.body;
+    const student = {name, srcode, program};
 
-    try {
-        const studentId = await studentService.createStudents(student);
-        res.status(201).json({
+    try{
+        const studentId = await studentServices.createStudent(student);
+        res.status(200).json({
             success: true,
             message: studentId
         });
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ error: "Internal Server Error" });
+    }catch(e){
+        console.log(e);
+        res.status(500).json({
+            error: "Internal Server Error"
+        })
     }
-};
+}
 
-export const editStudents = async (req, res) => {
-    const { name, srcode, program } = req.body;
-    const id = Number.parseInt(req.params.id, 10);
 
-    if (!Number.isInteger(id)) {
-        return res.status(400).json({ error: "Invalid student ID" });
-    }
+//UPDATE
+export const editStudent = async (req, res) =>{
+    const {name, srcode, program} = req.body;
+    const { id } = req.params;
+    const student = {id: parseInt(id), name, srcode, program};
 
-    const student = { id, name, srcode, program };
-
-    try {
-        const updatedStudents = await studentService.updateStudents(student);
+    try{
+        const updateStudent = await studentServices.updateStudent(student);
         res.status(200).json({
             success: true,
-            message: updatedStudents
+            message: updateStudent
         });
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ error: "Internal Server Error" });
+    }catch(e){
+        console.log(e);
+        res.status(500).json({
+            error: "Interval Server Error"
+        });
     }
-};
+}
 
-export const deleteStudents = async (req, res) => {
-    const id = Number.parseInt(req.params.id, 10);
 
-    if (!Number.isInteger(id)) {
-        return res.status(400).json({ error: "Invalid student ID" });
-    }
+///DELETE
+export const deleteStudent = async (req, res) =>{
+    const { id } = req.params;
 
-    try {
-        const deletedStudents = await studentService.deleteStudents(id);
+    try{
+        const deletedstudent = await studentServices.deleteStudent(parseInt(id));
         res.status(200).json({
             success: true,
-            message: deletedStudents
+            message: deletedstudent
         });
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ error: "Internal Server Error" });
+    }catch(e){
+        console.log(e);
+        res.status(500).json({
+            error: "Internal Server Error"
+        });
     }
-};
-
-
-//test update
+}

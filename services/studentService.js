@@ -1,22 +1,23 @@
-import * as studentModel from '../models/studentModel.js';
+import * as studentModels from '../models/studentModels.js';
 
-export const fetchAllStudent = async () => {
-    return await studentModel.fetch();
-};
+export const fetchAllStudents = async() => {
+    const students = await studentModels.fetch();
+    return students;
+}
 
-export const createStudents = async (student) => {
-    return await studentModel.insert(student);
-};
+export const createStudent = async(student) =>{
+    const studentId = await studentModels.insert(student);
+    return studentId
+}
 
-// Update
-export const updateStudents = async (student) => {
-    return await studentModel.update(student);
-};
+//UPDATE
+export const updateStudent = async(student) =>{
+    const updatedStudent = await studentModels.update(student);
+    return updatedStudent;
+}
 
-// Delete
-export const deleteStudents = async (id) => {
-    return await studentModel.remove(id);
-};
-
-
-//test updwte
+//DELET
+export const deleteStudent = async(id) =>{
+    const deletedstudent = await studentModels.remove(id);
+    return deletedstudent;
+}
